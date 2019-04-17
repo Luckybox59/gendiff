@@ -29,7 +29,7 @@ const finddiff = (data1, data2) => {
 const gendiff = (pathToFile1, pathToFile2) => {
   const fileContent1 = fs.readFileSync(fs.realpathSync(pathToFile1), { encoding: 'utf-8' });
   const fileContent2 = fs.readFileSync(fs.realpathSync(pathToFile2), { encoding: 'utf-8' });
-  console.log(finddiff(JSON.parse(fileContent1), JSON.parse(fileContent2)));
+  return (finddiff(JSON.parse(fileContent1), JSON.parse(fileContent2)));
 };
 
 program
@@ -39,7 +39,7 @@ program
 program
   .arguments('<firstConfig> <secondConfig>')
   .description('Compares two configuration files and shows a difference.')
-  .action((firstConfig, secondConfig) => gendiff(firstConfig, secondConfig));
+  .action((firstConfig, secondConfig) => console.log(gendiff(firstConfig, secondConfig)));
 
 program.parse(process.argv);
 
