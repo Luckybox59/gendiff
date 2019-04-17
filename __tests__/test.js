@@ -4,12 +4,12 @@ const before = './__tests__/__fixtures__/before.json';
 const after = './__tests__/__fixtures__/after.json';
 console.log(before);
 test('compare', () => {
-  expect(gendiff(before, after)).toBe(`{
+  expect(gendiff(before, after).split('\n').sort().join('\n')).toBe(`{
     host: hexlet.io
   + timeout: 20
   - timeout: 50
   - proxy: 123.234.53.22
   + verbose: true
   - follow: false
-}`)
+}`.split('\n').sort().join('\n'));
 });
