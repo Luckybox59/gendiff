@@ -7,3 +7,7 @@ step1:
 step2:
 
 [![asciicast](https://asciinema.org/a/2f5yStTVCYsDJtdWbHGwF3gV8.svg)](https://asciinema.org/a/2f5yStTVCYsDJtdWbHGwF3gV8)
+
+step3:
+
+[![asciicast](https://asciinema.org/a/Z67rSRxKnnLfa5Rd65aiXIWjY.svg)](https://asciinema.org/a/Z67rSRxKnnLfa5Rd65aiXIWjY)
