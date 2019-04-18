@@ -1,9 +1,9 @@
-import fs from 'fs';
 import _ from 'lodash';
+import parse from './parsers';
 
 export default (pathToFile1, pathToFile2) => {
-  const data1 = JSON.parse(fs.readFileSync(fs.realpathSync(pathToFile1), { encoding: 'utf-8' }));
-  const data2 = JSON.parse(fs.readFileSync(fs.realpathSync(pathToFile2), { encoding: 'utf-8' }));
+  const data1 = parse(pathToFile1);
+  const data2 = parse(pathToFile2);
   const keys1 = Object.keys(data1)
     .filter(key => !_.has(data2, key))
     .map(key => `  - ${key}: ${data1[key]}`);

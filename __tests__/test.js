@@ -1,4 +1,4 @@
-import gendiff from 'gendiff_by_igor_lucky';
+import gendiff from '../src/lib/gendiff';
 
 const pathToFile1 = './__tests__/__fixtures__/before.json';
 const pathToFile2 = './__tests__/__fixtures__/after.json';
