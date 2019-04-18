@@ -1,8 +1,8 @@
 {
-  "name": "gendiff_by_igor_lucky",
-  "version": "1.1.0",
+  "name": "hexlet_project2_by_igor_lucky",
+  "version": "1.1.1",
   "description": "Compares two configuration files and shows a difference.",
-  "main": "dist/bin/bin-gendiff.js",
+  "main": "dist/lib/gendiff.js",
   "bin": {
     "gendiff": "dist/bin/bin-gendiff.js"
   },
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "commander": "^2.20.0",
+    "gendiff_by_igor_lucky": "^1.1.1",
     "lodash": "^4.17.11"
   }
 }
