@@ -1,3 +1,4 @@
+import ini from 'ini';
 import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
@@ -10,6 +11,10 @@ const parsers = [
   {
     type: '.yml',
     action: filepath => yaml.safeLoad(filepath),
+  },
+  {
+    type: '.ini',
+    action: filepath => ini.parse(filepath),
   },
 ];
 
