@@ -11,7 +11,7 @@ program
 program
   .arguments('<firstConfig> <secondConfig>')
   .description('Compares two configuration files and shows a difference.')
-  .action((firstConfig, secondConfig) => gendiff(firstConfig, secondConfig));
+  .action((firstConfig, secondConfig) => console.log(gendiff(firstConfig, secondConfig)));
 
 program.parse(process.argv);
 
