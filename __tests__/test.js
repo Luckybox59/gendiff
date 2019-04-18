@@ -1,10 +1,9 @@
-import gendiff from '../src/bin/gendiff';
+import gendiff from '../src/lib/gendiff';
 
-const before = './__tests__/__fixtures__/before.json';
-const after = './__tests__/__fixtures__/after.json';
-console.log(before);
+const pathToFile1 = './__tests__/__fixtures__/before.json';
+const pathToFile2 = './__tests__/__fixtures__/after.json';
 test('compare', () => {
-  expect(gendiff(before, after).split('\n').sort().join('\n')).toBe(`{
+  expect(gendiff(pathToFile1, pathToFile2).split('\n').sort().join('\n')).toBe(`{
     host: hexlet.io
   + timeout: 20
   - timeout: 50
