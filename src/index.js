@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import program from 'commander';
-import gendiff from '../lib/gendiff';
-import pkg from '../../package.json';
+import gendiff from './lib/gendiff';
+import pkg from '../package.json';
 
 program
   .version(pkg.version, '-v, --version')
