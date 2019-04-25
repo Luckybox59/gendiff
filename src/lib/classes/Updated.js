@@ -1,8 +1,10 @@
 import { isObject } from 'lodash';
 
 const stringify = (value, gap) => (isObject(value)
-  ? Object.keys(value).sort().map(key => `{
-${' '.repeat(gap + 2)}  ${key}: ${stringify(value[key], gap + 4)}\n${' '.repeat(gap)}}`)
+  ? `{\n${' '.repeat(gap + 4)}${Object.keys(value)
+    .sort()
+    .map(key => `${key}: ${stringify(value[key], gap + 4)}`).join(`\n${' '.repeat(gap + 4)}`)}
+${' '.repeat(gap)}}`
   : `${value}`);
 
 export default class {

@@ -1,3 +1,3 @@
-const render = ast => `{\n${ast.join('\n')}\n}`;
+const render = ast => `{\n${ast.join('\n').toString()}\n}`;
 
 export default render;
