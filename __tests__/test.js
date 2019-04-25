@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { gendiff, render } from '..';
+import { gendiff, render } from '../src';
 
 const pathToFileJson1 = './__tests__/__fixtures__/before.json';
 const pathToFileJson2 = './__tests__/__fixtures__/after.json';
