@@ -20,7 +20,7 @@ env:
     CC_TEST_REPORTER_ID=fda4033de27be152cf53c219af8f6e946f5f2b5c4bda522a863aed39b6623226
 
 before_install:
-  - nvm install                         # Install node version from .nvmrc
+  #- nvm install                         # Install node version from .nvmrc
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   #- export DISPLAY=:99.0                # Display number for xvfb (for headless browser testing)
