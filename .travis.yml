@@ -38,10 +38,11 @@ install:
 script:
   - make lint
   - make test
+  - make coverage
   #- bundle exec rubocop -DESP           # Backend linting
   #- bundle exec rake                    # Backend specs
   #- npm test -- --browsers Firefox      # Frontend specs
-  - npm test                            # Frontend linting & specs
+  #- npm test                            # Frontend linting & specs
 
 # Pipe the coverage data to Code Climate
 after_script:
