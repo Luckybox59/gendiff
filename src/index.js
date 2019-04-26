@@ -1,4 +1,4 @@
-import gendiff from './lib/gendiff';
-import render from './lib/renderer';
+import gendiff from './gendiff';
+import render from './renderer';
 
-export { gendiff, render };
+export { gendiff as default, render };
