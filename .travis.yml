@@ -27,7 +27,7 @@ before_script:
 # Run the test suites
 script:
   - make lint
-  - make coverage
+  - npm run coverage
 
 # Pipe the coverage data to Code Climate
 after_script:
