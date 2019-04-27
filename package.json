@@ -13,7 +13,13 @@
     "prepublishOnly": "npm run build"
   },
   "jest": {
-    "collectCoverage": true
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/src/**"
+    ],
+    "coverageReporters": [
+      "json"
+    ]
   },
   "repository": {
     "type": "git",
