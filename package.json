@@ -19,7 +19,8 @@
     ],
     "coverageReporters": [
       "json"
-    ]
+    ],
+    "verbose": true
   },
   "repository": {
     "type": "git",
