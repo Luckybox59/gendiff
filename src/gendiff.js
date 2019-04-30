@@ -1,5 +1,6 @@
 import { isObject, union, has } from 'lodash';
 import parse from './parsers';
+import render from './renderer';
 
 const propertyActions = [
   {
@@ -75,8 +76,8 @@ const makeAst = (data1, data2, path = [], gap = 2) => {
   return ast;
 };
 
-export default (pathToFile1, pathToFile2) => {
+export default (pathToFile1, pathToFile2, format = 'tree') => {
   const data1 = parse(pathToFile1);
   const data2 = parse(pathToFile2);
-  return makeAst(data1, data2);
+  return render(makeAst(data1, data2), format);
 };
