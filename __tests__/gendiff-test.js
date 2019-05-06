@@ -31,7 +31,7 @@ test.each([
   getOptionsForTest('json'),
   getOptionsForTest('yaml'),
   getOptionsForTest('ini'),
-])('test gendiff %#', (a, b, actual, format) => {
-  const expected = gendiff(a, b, format);
+])('test gendiff %#', (before, after, actual, format) => {
+  const expected = gendiff(before, after, format);
   expect(expected).toBe(actual);
 });
