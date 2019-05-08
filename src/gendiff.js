@@ -1,6 +1,8 @@
 import { isObject, union, has } from 'lodash';
+import fs from 'fs';
+import fpath from 'path';
 import parse from './parsers';
-import render from './renderer';
+import render from './formatters';
 
 const propertyActions = [
   {
@@ -77,7 +79,9 @@ const makeAst = (data1, data2, path = [], gap = 2) => {
 };
 
 export default (pathToFile1, pathToFile2, format = 'tree') => {
-  const data1 = parse(pathToFile1);
-  const data2 = parse(pathToFile2);
+  const fileContent1 = fs.readFileSync(fs.realpathSync(pathToFile1), 'utf8');
+  const fileContent2 = fs.readFileSync(fs.realpathSync(pathToFile2), 'utf8');
+  const data1 = parse(fileContent1, fpath.extname(pathToFile1));
+  const data2 = parse(fileContent2, fpath.extname(pathToFile1));
   return render(makeAst(data1, data2), format);
 };

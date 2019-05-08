@@ -1,6 +1,6 @@
-import renderTree from './formatters/tree';
-import renderPlain from './formatters/plain';
-import renderJson from './formatters/json';
+import renderTree from './tree';
+import renderPlain from './plain';
+import renderJson from './json';
 
 export default (ast, type = 'tree') => {
   switch (type) {
