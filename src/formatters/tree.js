@@ -10,19 +10,23 @@ ${getGapLine(gap)}}`
   : `${value}`);
 
 const typeActions = {
-  saved: ({ gap, key, value }) => `${getGapLine(gap)}  ${key}: ${value}`,
-  added: ({ gap, key, value }) => `${getGapLine(gap)}+ ${key}: ${getFormattedValue(value, gap + 2)}`,
-  deleted: ({ gap, key, value }) => `${getGapLine(gap)}- ${key}: ${getFormattedValue(value, gap + 2)}`,
+  saved: ({ key, value }, gap) => `${getGapLine(gap)}  ${key}: ${value}`,
+  added: ({ key, value }, gap) => `${getGapLine(gap)}+ ${key}: ${getFormattedValue(value, gap + 2)}`,
+  deleted: ({ key, value }, gap) => `${getGapLine(gap)}- ${key}: ${getFormattedValue(value, gap + 2)}`,
   updated: ({
-    gap, key, oldValue, newValue,
-  }) => `${getGapLine(gap)}- ${key}: ${getFormattedValue(oldValue, gap + 2)}
+    key, oldValue, newValue,
+  }, gap) => `${getGapLine(gap)}- ${key}: ${getFormattedValue(oldValue, gap + 2)}
 ${getGapLine(gap)}+ ${key}: ${getFormattedValue(newValue, gap + 2)}`,
-  nested: ({ gap, key, children }, fn) => `${getGapLine(gap)}  ${key}: {\n${fn(children)}
+  nested: ({ key, children }, gap, fn) => `${getGapLine(gap)}  ${key}: {\n${fn(children, gap + 4).join('\n')}
 ${getGapLine(gap + 2)}}`,
 };
 
-const stringify = options => options
-  .map(lineOpts => typeActions[lineOpts.type](lineOpts, stringify))
-  .join('\n');
-
-export default ast => `{\n${stringify(ast)}\n}`;
+export default (ast) => {
+  const iter = (nodes, gap, acc = []) => {
+    if (!nodes.length) return acc;
+    const [first, ...rest] = nodes;
+    const newAcc = [...acc, typeActions[first.type](first, gap, iter)];
+    return iter(rest, gap, newAcc);
+  };
+  return `{\n${iter(ast, 2, []).join('\n')}\n}`;
+};
