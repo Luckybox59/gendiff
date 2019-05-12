@@ -13,7 +13,6 @@ const propertyActions = [
       key,
       type: 'added',
       value: data2[key],
-      children: [],
     }),
   },
   {
@@ -24,7 +23,6 @@ const propertyActions = [
       key,
       type: 'deleted',
       value: data1[key],
-      children: [],
     }),
   },
   {
@@ -36,7 +34,6 @@ const propertyActions = [
       key,
       type: 'saved',
       value: data1[key],
-      children: [],
     }),
   },
   {
@@ -60,7 +57,6 @@ const propertyActions = [
       type: 'updated',
       oldValue: data1[key],
       newValue: data2[key],
-      children: [],
     }),
   },
 ];
