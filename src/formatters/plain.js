@@ -12,36 +12,18 @@ const getFormattedValue = (value) => {
 
 const getAddreesKey = (path, key) => [...path, key].join('.');
 
-const typeActions = [
-  {
-    check: type => type === 'saved',
-    action: () => '',
-  },
-  {
-    check: type => type === 'added',
-    action: ({ path, key, value }) => `Property '${getAddreesKey(path, key)}' was added with value: ${getFormattedValue(value)}`,
-  },
-  {
-    check: type => type === 'deleted',
-    action: ({ path, key }) => `Property '${getAddreesKey(path, key)}' was removed`,
-  },
-  {
-    check: type => type === 'updated',
-    action: ({
-      path, key, oldValue, newValue,
-    }) => `Property '${getAddreesKey(path, key)}' was updated. From ${getFormattedValue(oldValue)} to ${getFormattedValue(newValue)}`,
-  },
-  {
-    check: type => type === 'nested',
-    action: ({ children }, fn) => fn(children),
-  },
-];
-
-const getTypeAction = type => typeActions.find(({ check }) => check(type));
+const typeActions = {
+  saved: () => '',
+  added: ({ path, key, value }) => `Property '${getAddreesKey(path, key)}' was added with value: ${getFormattedValue(value)}`,
+  deleted: ({ path, key }) => `Property '${getAddreesKey(path, key)}' was removed`,
+  updated: ({
+    path, key, oldValue, newValue,
+  }) => `Property '${getAddreesKey(path, key)}' was updated. From ${getFormattedValue(oldValue)} to ${getFormattedValue(newValue)}`,
+  nested: ({ children }, fn) => fn(children),
+};
 
 const stringify = options => options
-  .map(lineOpts => getTypeAction(lineOpts.type)
-    .action(lineOpts, stringify))
+  .map(lineOpts => typeActions[lineOpts.type](lineOpts, stringify))
   .filter(i => i)
   .sort()
   .join('\n');
