@@ -1,4 +1,4 @@
-import { isObject, isString, flattenDeep } from 'lodash';
+import { isObject, isString } from 'lodash';
 
 const getFormattedValue = (value) => {
   if (isObject(value)) {
@@ -19,7 +19,7 @@ const typeActions = {
   updated: ({
     key, oldValue, newValue,
   }, path) => `Property '${getAddressKey(path, key)}' was updated. From ${getFormattedValue(oldValue)} to ${getFormattedValue(newValue)}`,
-  nested: ({ key, children }, path, fn) => fn(children, [...path, key]),
+  nested: ({ key, children }, path, fn) => fn(children, [...path, key]).filter(i => i).join('\n'),
 };
 
 export default (ast) => {
@@ -29,7 +29,7 @@ export default (ast) => {
     const newAcc = [...acc, typeActions[first.type](first, path, iter)];
     return iter(rest, path, newAcc);
   };
-  return flattenDeep(iter(ast, [], []))
+  return iter(ast, [], [])
     .filter(i => i)
     .join('\n');
 };
