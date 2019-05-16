@@ -8,7 +8,7 @@ cli-утилита для поиска отличий в конфигураци�
 
 Возможности утилиты:
 
-* Поддержка разных форматов
+* Поддержка разных форматов JSON, yaml, ini
 * Генерация отчета в виде plain text, pretty и json
 
 [![asciicast](https://asciinema.org/a/j5luQHTtAEIa7DmjbEKMfrIcP.svg)](https://asciinema.org/a/j5luQHTtAEIa7DmjbEKMfrIcP)
